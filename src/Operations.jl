@@ -559,4 +559,14 @@ function rm(pkgs::Vector{String})
 end
 rm(pkgs::String...) = rm(String[pkgs...])
 
+# update:
+#  * patch update named deps, default to all top-levels
+#  * upgrade their dependencies
+#  * clean up orphans
+
+# upgrade:
+#  * upgrade named deps to latest, default to all top-levels
+#  * upgrade their dependencies
+#  * clean up orphans
+
 end # module
