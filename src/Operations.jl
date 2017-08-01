@@ -559,14 +559,28 @@ function rm(pkgs::Vector{String})
 end
 rm(pkgs::String...) = rm(String[pkgs...])
 
-# update:
-#  * patch update named deps, default to all top-levels
-#  * upgrade their dependencies
-#  * clean up orphans
+@enum UpgradeLevel fixed=0 patch=1 minor=2 major=3
 
-# upgrade:
-#  * upgrade named deps to latest, default to all top-levels
-#  * upgrade their dependencies
+function Base.convert(::Type{UpgradeLevel}, s::Symbol)
+    s == :fixed ? fixed :
+    s == :patch ? patch :
+    s == :minor ? minor :
+    s == :major ? major :
+    throw(ArgumentError("invalid upgrade bound: $s"))    
+end
+
+function up(
+    pkgs::Vector{String};
+    direct::UpgradeLevel = patch,
+    indirect::UpgradeLevel = major,
+    registries::Bool = true,
+)
+    
+end
+
+# upgrage:
+#  * upgrade direct deps, default to all top-levels
+#  * upgrade their indirect dependencies
 #  * clean up orphans
 
 end # module

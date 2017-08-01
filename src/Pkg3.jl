@@ -7,7 +7,7 @@ include("Loading.jl")
 import .Types: VersionRange, @vr_str
 import .Loading: Loader, LoadInstalled
 import .Operations:
-    add, find_config, find_manifest, user_depot, depots, registries
+    add, find_config, find_manifest, user_depot, depots, registries, UpgradeBound
 
 export @vr_str
 
